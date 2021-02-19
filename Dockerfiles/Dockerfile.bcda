@@ -6,7 +6,7 @@ RUN apk add git openssl
 RUN openssl genrsa -out /var/local/private.pem 2048
 RUN openssl rsa -in /var/local/private.pem -outform PEM -pubout -out /var/local/public.pem
 
-RUN go get -u github.com/derekparker/delve/cmd/dlv
+RUN go get -u github.com/go-delve/delve/cmd/dlv
 RUN go get github.com/BurntSushi/toml
 RUN go get github.com/howeyc/fsnotify
 RUN go get github.com/mattn/go-colorable
@@ -16,4 +16,4 @@ COPY . .
 
 WORKDIR /go/src/github.com/CMSgov/bcda-app/bcda
 RUN go install
-CMD ["bcda", "start-api"]
+CMD ["dlv", "--listen=:2345",  "--headless=true",  "--accept-multiclient", "--api-version=2", "exec", "--continue", "/go/bin/bcda", "--", "start-api"]

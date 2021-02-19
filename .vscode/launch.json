@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach API",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "/go/src/github.com/CMSgov/bcda-app/bcda",
+            "cwd": "${workspaceFolder}/bcda",
+            "port": 2345,
+            "host": "127.0.0.1",
+            "showLog": true,
+            // "trace": "log",
+            // "logOutput": "rpc"
+            "logOutput": "debugger",
+        },
+        {
+            "name": "Attach Worker",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "/go/src/github.com/CMSgov/bcda-app/bcdaworker",
+            "cwd": "${workspaceFolder}/bcdaworker",
+            "port": 2346,
+            "host": "127.0.0.1",
+            "showLog": true,
+            // "trace": "log",
+            // "logOutput": "rpc"
+            "logOutput": "debugger",
+        }
+    ]
+}
