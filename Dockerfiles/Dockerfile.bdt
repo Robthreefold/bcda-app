@@ -1,4 +1,4 @@
-FROM node:current-slim
+FROM node:26.13.1-trixie-slim
 
 WORKDIR '/'
 
